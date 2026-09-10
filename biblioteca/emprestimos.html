@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empréstimos — Biblioteca</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="emprestimos">
+  <nav id="navbar"></nav>
+
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <h1>Empréstimos</h1>
+        <p class="subtitle">Controle de empréstimos e devoluções</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Novo empréstimo</h2>
+      <form id="form-emprestimo" novalidate>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label for="emp-leitor">Leitor *</label>
+            <select id="emp-leitor" class="input" required></select>
+          </div>
+          <div class="form-field">
+            <label for="emp-livro">Livro *</label>
+            <select id="emp-livro" class="input" required></select>
+          </div>
+          <div class="form-field">
+            <label for="emp-data">Data do empréstimo *</label>
+            <input type="date" id="emp-data" class="input" required>
+          </div>
+          <div class="form-field">
+            <label for="emp-prevista">Devolução prevista (automática, +14 dias)</label>
+            <input type="date" id="emp-prevista" class="input input-readonly" readonly>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Registrar empréstimo</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="card-header-row">
+        <h2>Empréstimos registrados</h2>
+        <div class="toolbar-inline">
+          <label class="sr-only" for="filtro-status">Filtrar por status</label>
+          <select id="filtro-status" class="input">
+            <option value="todos">Todos</option>
+            <option value="ativo">Ativos</option>
+            <option value="atrasado">Atrasados</option>
+            <option value="devolvido">Devolvidos</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Livro</th>
+              <th>Leitor</th>
+              <th>Empréstimo</th>
+              <th>Prevista</th>
+              <th>Devolução</th>
+              <th>Status</th>
+              <th class="actions-col">Ação</th>
+            </tr>
+          </thead>
+          <tbody id="tb-emprestimos"></tbody>
+        </table>
+      </div>
+      <p id="emprestimos-vazio" class="empty-state" hidden>Nenhum empréstimo registrado.</p>
+    </section>
+  </main>
+
+  <div class="toast-container"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/emprestimos.js"></script>
+</body>
+</html>

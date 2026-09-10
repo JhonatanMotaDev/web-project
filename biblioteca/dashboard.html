@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Biblioteca</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+  <nav id="navbar"></nav>
+
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="subtitle" id="dashboard-welcome">Visão geral da biblioteca</p>
+      </div>
+    </header>
+
+    <section class="stat-grid">
+      <div class="stat-card stat-card-green">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <div class="stat-value" id="stat-livros">0</div>
+          <div class="stat-label">Livros no acervo</div>
+        </div>
+      </div>
+      <div class="stat-card stat-card-blue">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="stat-value" id="stat-leitores">0</div>
+          <div class="stat-label">Leitores cadastrados</div>
+        </div>
+      </div>
+      <div class="stat-card stat-card-amber">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div>
+          <div class="stat-value" id="stat-ativos">0</div>
+          <div class="stat-label">Empréstimos ativos</div>
+        </div>
+      </div>
+      <div class="stat-card stat-card-red">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5"/><path d="M12 17h.01"/></svg>
+        </div>
+        <div>
+          <div class="stat-value" id="stat-atrasados">0</div>
+          <div class="stat-label">Empréstimos atrasados</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Empréstimos em atraso</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Livro</th>
+              <th>Leitor</th>
+              <th>Prevista</th>
+              <th>Dias de atraso</th>
+            </tr>
+          </thead>
+          <tbody id="tb-atrasados"></tbody>
+        </table>
+      </div>
+      <p id="atrasados-vazio" class="empty-state" hidden>Nenhum empréstimo atrasado.</p>
+    </section>
+
+    <section class="card">
+      <h2>Últimos empréstimos</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Livro</th>
+              <th>Leitor</th>
+              <th>Empréstimo</th>
+              <th>Prevista</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tb-recentes"></tbody>
+        </table>
+      </div>
+      <p id="recentes-vazio" class="empty-state" hidden>Nenhum empréstimo registrado ainda.</p>
+    </section>
+  </main>
+
+  <div class="toast-container"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

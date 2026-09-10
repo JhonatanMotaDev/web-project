@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livros — Biblioteca</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="livros">
+  <nav id="navbar"></nav>
+
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <h1>Livros</h1>
+        <p class="subtitle">Gerencie o acervo da biblioteca</p>
+      </div>
+      <button type="button" id="btn-novo-livro" class="btn btn-primary">+ Novo Livro</button>
+    </header>
+
+    <div class="toolbar">
+      <input type="text" id="busca-livros" class="input search-input" placeholder="Buscar por título, autor ou categoria...">
+      <span id="livro-count" class="count-badge"></span>
+    </div>
+
+    <section class="card">
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>ISBN</th>
+              <th>Categoria</th>
+              <th>Ano</th>
+              <th>Editora</th>
+              <th class="num">Total</th>
+              <th class="num">Disponível</th>
+              <th class="actions-col">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tb-livros"></tbody>
+        </table>
+      </div>
+      <p id="livros-vazio" class="empty-state" hidden>Nenhum livro cadastrado.</p>
+    </section>
+  </main>
+
+  <div id="modal-livro" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-livro-title">Novo Livro</h2>
+        <button type="button" class="modal-close" data-close>&times;</button>
+      </div>
+      <form id="form-livro" novalidate>
+        <input type="hidden" id="livro-id">
+        <div class="form-row-2">
+          <div class="form-field">
+            <label for="livro-titulo">Título *</label>
+            <input type="text" id="livro-titulo" class="input" required>
+          </div>
+          <div class="form-field">
+            <label for="livro-autor">Autor *</label>
+            <input type="text" id="livro-autor" class="input" required>
+          </div>
+          <div class="form-field">
+            <label for="livro-isbn">ISBN *</label>
+            <input type="text" id="livro-isbn" class="input" placeholder="Ex: 978-85-1234-567-8" required>
+          </div>
+          <div class="form-field">
+            <label for="livro-categoria">Categoria *</label>
+            <input type="text" id="livro-categoria" class="input" placeholder="Ex: Ficção, Técnico, Infantil" required>
+          </div>
+          <div class="form-field">
+            <label for="livro-ano">Ano *</label>
+            <input type="number" id="livro-ano" class="input" min="1000" max="9999" required>
+          </div>
+          <div class="form-field">
+            <label for="livro-editora">Editora *</label>
+            <input type="text" id="livro-editora" class="input" required>
+          </div>
+          <div class="form-field">
+            <label for="livro-qtd-total">Quantidade total *</label>
+            <input type="number" id="livro-qtd-total" class="input" min="0" step="1" required>
+          </div>
+          <div class="form-field">
+            <label for="livro-qtd-disponivel">Quantidade disponível</label>
+            <input type="text" id="livro-qtd-disponivel" class="input input-readonly" readonly>
+            <small class="field-hint">Calculada automaticamente pelos empréstimos.</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-close>Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/livros.js"></script>
+</body>
+</html>

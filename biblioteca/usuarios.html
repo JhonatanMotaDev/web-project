@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuários — Biblioteca</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="usuarios">
+  <nav id="navbar"></nav>
+
+  <main class="container">
+    <header class="page-header">
+      <div>
+        <h1>Usuários / Leitores</h1>
+        <p class="subtitle">Cadastro de leitores da biblioteca</p>
+      </div>
+      <button type="button" id="btn-novo-usuario" class="btn btn-primary">+ Novo Usuário</button>
+    </header>
+
+    <div class="toolbar">
+      <input type="text" id="busca-usuarios" class="input search-input" placeholder="Buscar por nome ou matrícula...">
+      <span id="usuario-count" class="count-badge"></span>
+    </div>
+
+    <section class="card">
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome Completo</th>
+              <th>Matrícula / CPF</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+              <th class="actions-col">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tb-usuarios"></tbody>
+        </table>
+      </div>
+      <p id="usuarios-vazio" class="empty-state" hidden>Nenhum usuário cadastrado.</p>
+    </section>
+  </main>
+
+  <div id="modal-usuario" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-usuario-title">Novo Usuário</h2>
+        <button type="button" class="modal-close" data-close>&times;</button>
+      </div>
+      <form id="form-usuario" novalidate>
+        <input type="hidden" id="usuario-id">
+        <div class="form-field">
+          <label for="usuario-nome">Nome completo *</label>
+          <input type="text" id="usuario-nome" class="input" required>
+        </div>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label for="usuario-matricula">Matrícula / CPF *</label>
+            <input type="text" id="usuario-matricula" class="input" placeholder="Ex: 2026001234 ou 123.456.789-00" required>
+          </div>
+          <div class="form-field">
+            <label for="usuario-telefone">Telefone</label>
+            <input type="tel" id="usuario-telefone" class="input" placeholder="(DDD) 99999-9999">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="usuario-email">E-mail *</label>
+          <input type="email" id="usuario-email" class="input" placeholder="leitor@email.com" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-close>Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/usuarios.js"></script>
+</body>
+</html>
