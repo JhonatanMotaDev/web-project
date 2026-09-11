@@ -8,9 +8,9 @@ Aplicação web **HTML + CSS + JavaScript puro**, sem frameworks, sem dependênc
 
 | Nome | Módulo(s) |
 |------|-----------|
-| *Jhonatan Mota* | Livros + estilização/CSS |
-| *Pedro Maia* | Usuários/Leitores + Login/Autenticação |
-| *Tales Gabriel* | Empréstimos + Dashboard |
+| *Jhonatan Mota*
+| *Pedro Maia*
+| *Thales Daniel*
 
 > **Disciplina:** Programação de Sistemas Web
 > **Semestre:** 2º semestre de 2026
