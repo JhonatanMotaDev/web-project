@@ -1,5 +1,45 @@
 let editLivroId = null;
 
+const livrosIniciais = [
+  { id: 1, titulo: "Dom Casmurro", autor: "Machado de Assis", isbn: "978-8535902778", categoria: "Romance", ano: 1899, editora: "Companhia das Letras", quantidadeTotal: 5, quantidadeDisponivel: 3 },
+  { id: 2, titulo: "1984", autor: "George Orwell", isbn: "978-8535914849", categoria: "Ficção Científica", ano: 1949, editora: "Companhia das Letras", quantidadeTotal: 4, quantidadeDisponivel: 1 },
+  { id: 3, titulo: "O Hobbit", autor: "J.R.R. Tolkien", isbn: "978-8595084742", categoria: "Fantasia", ano: 1937, editora: "HarperCollins", quantidadeTotal: 8, quantidadeDisponivel: 6 },
+  { id: 4, titulo: "Algoritmos: Teoria e Prática", autor: "Thomas H. Cormen", isbn: "978-8535236996", categoria: "Tecnologia", ano: 2012, editora: "Campus", quantidadeTotal: 3, quantidadeDisponivel: 0 },
+  { id: 5, titulo: "O Pequeno Príncipe", autor: "Antoine de Saint-Exupéry", isbn: "978-8522031436", categoria: "Infantojuvenil", ano: 1943, editora: "Agir", quantidadeTotal: 6, quantidadeDisponivel: 4 },
+  { id: 6, titulo: "Sapiens: Uma Breve História da Humanidade", autor: "Yuval Noah Harari", isbn: "978-8535925714", categoria: "História", ano: 2014, editora: "L&PM", quantidadeTotal: 7, quantidadeDisponivel: 5 },
+  { id: 7, titulo: "O Senhor dos Anéis: A Sociedade do Anel", autor: "J.R.R. Tolkien", isbn: "978-8595084759", categoria: "Fantasia", ano: 1954, editora: "HarperCollins", quantidadeTotal: 5, quantidadeDisponivel: 2 },
+  { id: 8, titulo: "A Revolução dos Bichos", autor: "George Orwell", isbn: "978-8535909555", categoria: "Sátira Político-Social", ano: 1945, editora: "Companhia das Letras", quantidadeTotal: 6, quantidadeDisponivel: 6 },
+  { id: 9, titulo: "Orgulho e Preconceito", autor: "Jane Austen", isbn: "978-8535931815", categoria: "Romance", ano: 1813, editora: "Penguin Classics", quantidadeTotal: 4, quantidadeDisponivel: 2 },
+  { id: 10, titulo: "Cem Anos de Solidão", autor: "Gabriel García Márquez", isbn: "978-8501012074", categoria: "Realismo Mágico", ano: 1967, editora: "Record", quantidadeTotal: 3, quantidadeDisponivel: 1 },
+  { id: 11, titulo: "Código Limpo (Clean Code)", autor: "Robert C. Martin", isbn: "978-8576082675", categoria: "Tecnologia", ano: 2009, editora: "Alta Books", quantidadeTotal: 5, quantidadeDisponivel: 2 },
+  { id: 12, titulo: "O Alquimista", autor: "Paulo Coelho", isbn: "978-8575422380", categoria: "Ficção", ano: 1988, editora: "Paralela", quantidadeTotal: 8, quantidadeDisponivel: 7 },
+  { id: 13, titulo: "Duna", autor: "Frank Herbert", isbn: "978-8576573135", categoria: "Ficção Científica", ano: 1965, editora: "Aleph", quantidadeTotal: 6, quantidadeDisponivel: 3 },
+  { id: 14, titulo: "O Apanhador no Campo de Centeio", autor: "J.D. Salinger", isbn: "978-8501020864", categoria: "Romance", ano: 1951, editora: "Editora do Autor", quantidadeTotal: 3, quantidadeDisponivel: 3 },
+  { id: 15, titulo: "O Sol é Para Todos", autor: "Harper Lee", isbn: "978-8501103215", categoria: "Romance", ano: 1960, editora: "José Olympio", quantidadeTotal: 4, quantidadeDisponivel: 1 },
+  { id: 16, titulo: "A Hora da Estrela", autor: "Clarice Lispector", isbn: "978-8532511010", categoria: "Literatura Brasileira", ano: 1977, editora: "Rocco", quantidadeTotal: 5, quantidadeDisponivel: 4 },
+  { id: 17, titulo: "O Nome da Rosa", autor: "Umberto Eco", isbn: "978-8501033284", categoria: "Romance Histórico", ano: 1980, editora: "Record", quantidadeTotal: 3, quantidadeDisponivel: 2 },
+  { id: 18, titulo: "Frankenstein", autor: "Mary Shelley", isbn: "978-8535929651", categoria: "Terror", ano: 1818, editora: "Landmark", quantidadeTotal: 4, quantidadeDisponivel: 4 },
+  { id: 19, titulo: "O Código Da Vinci", autor: "Dan Brown", isbn: "978-8580410037", categoria: "Suspense", ano: 2003, editora: "Arqueiro", quantidadeTotal: 7, quantidadeDisponivel: 5 },
+  { id: 20, titulo: "Fahrenheit 451", autor: "Ray Bradbury", isbn: "978-8501018861", categoria: "Ficção Científica", ano: 1953, editora: "Globo", quantidadeTotal: 5, quantidadeDisponivel: 2 },
+  { id: 21, titulo: "Pense e Enriqueça", autor: "Napoleon Hill", isbn: "978-8504018240", categoria: "Desenvolvimento Pessoal", ano: 1937, editora: "Fundamento", quantidadeTotal: 6, quantidadeDisponivel: 4 },
+  { id: 22, titulo: "O Programador Pragmático", autor: "Andrew Hunt, David Thomas", isbn: "978-8576082676", categoria: "Tecnologia", ano: 1999, editora: "Bookman", quantidadeTotal: 4, quantidadeDisponivel: 1 },
+  { id: 23, titulo: "A Metamorfose", autor: "Franz Kafka", isbn: "978-8535900897", categoria: "Ficção", ano: 1915, editora: "Companhia das Letras", quantidadeTotal: 5, quantidadeDisponivel: 5 },
+  { id: 24, titulo: "Ensaio Sobre a Cegueira", autor: "José Saramago", isbn: "978-8535901306", categoria: "Ficção", ano: 1995, editora: "Companhia das Letras", quantidadeTotal: 4, quantidadeDisponivel: 2 },
+  { id: 25, titulo: "Entendendo Algoritmos", autor: "Aditya Y. Bhargava", isbn: "978-8575225639", categoria: "Tecnologia", ano: 2017, editora: "Novatec", quantidadeTotal: 6, quantidadeDisponivel: 4 },
+  { id: 26, titulo: "Grande Sertão: Veredas", autor: "Guimarães Rosa", isbn: "978-8520923054", categoria: "Literatura Brasileira", ano: 1956, editora: "Nova Fronteira", quantidadeTotal: 3, quantidadeDisponivel: 1 },
+  { id: 27, titulo: "Neuromancer", autor: "William Gibson", isbn: "978-8576573005", categoria: "Cyberpunk", ano: 1984, editora: "Aleph", quantidadeTotal: 4, quantidadeDisponivel: 3 },
+  { id: 28, titulo: "Rápido e Devagar: Duas Formas de Pensar", autor: "Daniel Kahneman", isbn: "978-8539003839", categoria: "Psicologia", ano: 2011, editora: "Objetiva", quantidadeTotal: 5, quantidadeDisponivel: 3 },
+  { id: 29, titulo: "O Silmarillion", autor: "J.R.R. Tolkien", isbn: "978-8595084377", categoria: "Fantasia", ano: 1977, editora: "HarperCollins", quantidadeTotal: 4, quantidadeDisponivel: 2 },
+  { id: 30, titulo: "O Homem mais Rico da Babilônia", autor: "George S. Clason", isbn: "978-8504019995", categoria: "Finanças", ano: 1926, editora: "HarperCollins", quantidadeTotal: 8, quantidadeDisponivel: 6 }
+];
+
+function inicializarBancoDeDados() {
+  const livrosExistentes = getData(StoreKeys.LIVROS, []);
+  if (!livrosExistentes || livrosExistentes.length === 0) {
+    saveData(StoreKeys.LIVROS, livrosIniciais);
+  }
+}
+
 function statusBadgeLivro(disp) {
   if (disp === 0) return '<span class="badge badge-danger">Esgotado</span>';
   return '<span class="badge badge-success">Disponível</span>';
@@ -172,6 +212,9 @@ function excluirLivro(id) {
 
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.dataset.page !== 'livros') return;
+
+  inicializarBancoDeDados();
+
   document.getElementById('btn-novo-livro').addEventListener('click', () => openLivroModal(null));
   document.getElementById('busca-livros').addEventListener('input', renderLivros);
   document.getElementById('form-livro').addEventListener('submit', saveLivro);
